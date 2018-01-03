@@ -9,13 +9,12 @@ import {
     LabelList,
     Pie,
     PieChart,
-    Sector
+    Sector, Cell
 } from 'recharts';
 
 import React from 'react';
 
-const data = [{name: 'Nacional', value: 400}, {name: 'International', value: 300},
-                  {name: 'Tech', value: 300}, {name: 'Sports', value: 200}];
+const data = [{name: 'Love', value: 400}, {name: 'Hate', value: 300}];
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -83,19 +82,23 @@ export class TwoLevelPieChart extends React.Component {
 
 	render () {
   	return (
-    	<PieChart width={600} height={400}>
+    	<PieChart width={600} height={300}>
         <Pie
         activeIndex={this.state.activeIndex}
         activeShape={renderActiveShape}
         data={data}
-        cx={300}
-        cy={200}
+        cx={160}
+        cy={135}
         innerRadius={60}
         outerRadius={80}
         dataKey="value"
-        fill="#333"
+        fill="rgb(169, 209, 252)"
         onMouseEnter={this.onPieEnter}
-        />
+            >
+            {
+          	    data.map((entry, index) => <Cell fill={entry.name === 'Love' ? 'rgb(169, 209, 252)' : 'red'}/>)
+          }
+        </Pie>
        </PieChart>
     );
   }

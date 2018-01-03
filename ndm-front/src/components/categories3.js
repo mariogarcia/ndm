@@ -18,10 +18,11 @@ export class TopStories extends React.Component {
   render() {
     return (
         <ReactTable
-          data={this.state.data}
+        data={this.state.data}
+
           columns={[
             {
-              Header: "Top 10 Stories",
+
                 columns: [
                 {
                   Header: "Index",
