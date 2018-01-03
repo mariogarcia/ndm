@@ -1,0 +1,4 @@
+include 'ndm-front'
+include 'ndm-graphql'
+
+rootProject.name = 'ndm-graphql'
