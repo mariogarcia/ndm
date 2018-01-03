@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {SimpleBarChart} from '../../components/categories';
+import {TwoLevelPieChart} from '../../components/categories2';
+import {TopStories} from '../../components/categories3';
 
 export class Detail extends Component {
     constructor(props) {
@@ -16,7 +19,11 @@ export class Detail extends Component {
             <div>
                 <h1>Newspaper Detail</h1>
                 <h3>{this.state.newspaper}</h3>
-
+                <div>
+                   <TwoLevelPieChart/>
+                <SimpleBarChart/>
+                <TopStories/>
+                </div>
             </div>
         );
     }
