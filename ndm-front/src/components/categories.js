@@ -23,17 +23,17 @@ const data = [
 
 export class SimpleBarChart extends React.Component {
 	render () {
-  	return (
-    	<BarChart width={700} height={300} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-            <XAxis dataKey="name"/>
-            <YAxis/>
-            <CartesianGrid strokeDasharray="3 3"/>
-            <Tooltip/>
-            <Legend />
-            <Bar dataKey="articles" fill="#a9d1fc">
-                <LabelList dataKey="articles" position="inside" />
-            </Bar>
-      </BarChart>
-    );
-  }
+  	    return (
+    	    <BarChart width={700} height={300} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <CartesianGrid strokeDasharray="3 3"/>
+                <Tooltip/>
+                <Legend />
+                <Bar dataKey="articles" fill="#a9d1fc">
+                    <LabelList dataKey="articles" position="inside" />
+                </Bar>
+            </BarChart>
+        );
+    }
 }

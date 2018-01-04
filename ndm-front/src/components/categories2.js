@@ -81,25 +81,24 @@ export class TwoLevelPieChart extends React.Component {
     }
 
 	render () {
-  	return (
-    	<PieChart width={600} height={300}>
-        <Pie
-        activeIndex={this.state.activeIndex}
-        activeShape={renderActiveShape}
-        data={data}
-        cx={160}
-        cy={135}
-        innerRadius={60}
-        outerRadius={80}
-        dataKey="value"
-        fill="rgb(169, 209, 252)"
-        onMouseEnter={this.onPieEnter}
-            >
-            {
-          	    data.map((entry, index) => <Cell fill={entry.name === 'Love' ? 'rgb(169, 209, 252)' : 'red'}/>)
-          }
-        </Pie>
-       </PieChart>
-    );
-  }
+  	    return (
+    	    <PieChart width={600} height={300}>
+                <Pie
+                    activeIndex={this.state.activeIndex}
+                    activeShape={renderActiveShape}
+                    data={data}
+                    cx={160}
+                    cy={135}
+                    innerRadius={60}
+                    outerRadius={80}
+                    dataKey="value"
+                    fill="rgb(169, 209, 252)"
+                    onMouseEnter={this.onPieEnter}>
+                    {
+                        data.map((entry, index) => <Cell key='cell' fill={entry.name === 'Love' ? 'rgb(169, 209, 252)' : 'red'} />)
+                    }
+                </Pie>
+            </PieChart>
+        );
+    }
 }

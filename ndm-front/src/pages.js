@@ -1,2 +1,2 @@
-export { List as NewspapersListPage } from './pages/newspaper/list';
-export { Detail as NewspapersDetailPage } from './pages/newspaper/detail';
+export { List as CountryListPage } from './pages/country/list';
+export { Detail as CountryDetailPage } from './pages/country/detail';

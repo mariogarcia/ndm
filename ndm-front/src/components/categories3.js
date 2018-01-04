@@ -12,44 +12,42 @@ export class TopStories extends React.Component {
 
     componentDidMount() {
         this.setState( {
-            data: [{index: 1, title: "Puigdemont pasa a disposicion judicial", category: "nacional", publishDate: "22/12/2017", keywords: "Puigdemont, Catalunya, elecciones, Rajoy"}]
+            data: [
+                {index: 1, name: "El Mundo", site: "www.elmundo.es", keywords: "Puigdemont, Catalunya, elecciones, Rajoy"},
+                {index: 2, name: "ABC", site: "www.abc.es", keywords: "Puigdemont, Catalunya, elecciones, Rajoy"},
+                {index: 3, name: "El Pais", site: "www.elpais.com", keywords: "Puigdemont, Catalunya, elecciones, Rajoy"}
+            ]
         });
     }
   render() {
-    return (
-        <ReactTable
-        data={this.state.data}
+      return (
+          <ReactTable
+              data={this.state.data}
+              columns={[
+                  {
+                      columns: [
+                          {
+                              Header: "Index",
+                              accessor: "index"
+                          },
+                          {
+                              Header: "Name",
+                              accessor: "name"
+                          },
+                          {
+                              Header: "Site",
+                              accessor: "site"
+                          },
+                          {
+                              Header: "Keywords",
+                              accessor: "keywords"
+                          }
+                      ]
+                  }
+              ]}
 
-          columns={[
-            {
-
-                columns: [
-                {
-                  Header: "Index",
-                  accessor: "index"
-                },
-                {
-                  Header: "Publish Date",
-                  accessor: "publishDate"
-                },
-                {
-                  Header: "Title",
-                  accessor: "title"
-                },
-                {
-                  Header: "Category",
-                  accessor: "category"
-                },
-                {
-                  Header: "Keywords",
-                  accessor: "keywords"
-                }
-              ]
-            }
-          ]}
-
-          className="-striped -highlight"
-        />
-    );
+              className="-striped -highlight"
+              />
+      );
   }
 }
