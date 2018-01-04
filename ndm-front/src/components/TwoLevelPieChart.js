@@ -102,3 +102,5 @@ export class TwoLevelPieChart extends React.Component {
         );
     }
 }
+
+export default TwoLevelPieChart

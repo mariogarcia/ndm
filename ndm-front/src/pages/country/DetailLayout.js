@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import {SimpleBarChart} from '../../components/categories';
-import {TwoLevelPieChart} from '../../components/categories2';
-import {TopStories} from '../../components/categories3';
+import React, { Component } from 'react'
+
+import SimpleBarChart from '../../components/SimpleBarChart'
+import TwoLevelPieChart from '../../components/TwoLevelPieChart'
+import NewspaperList from '../../components/NewspaperList'
+import FigurePanel from '../../components/FigurePanel'
 
 import {
     Navbar,
@@ -12,9 +14,9 @@ import {
     Col,
     Button,
     Panel, Image
-} from 'react-bootstrap';
+} from 'react-bootstrap'
 
-import { TagCloud } from "react-tagcloud";
+import { TagCloud } from "react-tagcloud"
 
 const tags = [
     { value: "Diana Quer", count: 100 },
@@ -29,57 +31,52 @@ const tags = [
     { value: "Investigacion", count: 33 },
     { value: "Macron", count: 33 },
     { value: "Bomba frio", count: 20 }
-];
+]
 
 const options = {
     luminosity: 'dark',
     hue: 'blue'
-};
+}
 
 export class Detail extends Component {
+
     constructor(props) {
-        super();
+        super()
+
         this.state = {
             newspaper: props.match.params.site
-        };
-
+        }
     }
+
     componentDidMount() {
         console.log("yes")
     }
+
     render() {
         return (
             <Grid>
                 <Row>
                     <Col xs={6}>
-                        <Panel header="Country">
-                            <h1 className="text-center">Spain</h1>
-                        </Panel>
+                        <FigurePanel title="Country" value="Spain"/>
                     </Col>
                     <Col xs={2}>
-                        <Panel header="Newspapers">
-                            <h1 className="text-center">120</h1>
-                        </Panel>
+                        <FigurePanel title="Newspapers" value="120"/>
                     </Col>
                     <Col xs={2}>
-                        <Panel header="Articles">
-                            <h1 className="text-center">12.000</h1>
-                        </Panel>
+                        <FigurePanel title="Articles" value="12.000"/>
                     </Col>
                     <Col xs={2}>
-                        <Panel header="Authors">
-                            <h1 className="text-center">220</h1>
-                        </Panel>
+                        <FigurePanel title="Authors" value="220"/>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
                         <Panel header="Tags">
                             <TagCloud className="text-center" minSize={20}
-                                 maxSize={36}
-                                 colorOptions={options}
-                                 tags={tags}/>
-                         </Panel>
+                                      maxSize={36}
+                                      colorOptions={options}
+                                      tags={tags}/>
+                        </Panel>
                     </Col>
                 </Row>
                 <Row>
@@ -97,11 +94,11 @@ export class Detail extends Component {
                 <Row>
                     <Col xs={12}>
                         <Panel header="Categories">
-                <TopStories/>
+                            <NewspaperList/>
                         </Panel>
                     </Col>
                 </Row>
             </Grid>
-        );
+        )
     }
 }

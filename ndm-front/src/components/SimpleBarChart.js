@@ -37,3 +37,5 @@ export class SimpleBarChart extends React.Component {
         );
     }
 }
+
+export default SimpleBarChart

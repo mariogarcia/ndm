@@ -3,6 +3,7 @@ import { Country} from '../../services/Country';
 import { Link } from 'react-router-dom';
 
 export class List extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -10,6 +11,7 @@ export class List extends Component {
         };
 
     }
+
     componentDidMount() {
         let countries = Country
             .listAll()
@@ -17,6 +19,7 @@ export class List extends Component {
 
         this.setState({ countries: countries });
     }
+
     render() {
         return (
             <div>
