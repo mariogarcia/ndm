@@ -8,6 +8,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 import ndm.system.SystemGraphQL
+import ndm.country.Queries as CountryQueries
 
 /**
  * Provides a singleton instance of the {@link GraphQLSchema} type
@@ -17,12 +18,14 @@ import ndm.system.SystemGraphQL
 class SchemaProvider implements Provider<GraphQLSchema> {
 
   @Inject SystemGraphQL graphQLSystem
+  @Inject CountryQueries countryQueries
 
   @Override
   GraphQLSchema get() {
     return schema {
       queries {
         addField graphQLSystem.getSystemStatus()
+        addField countryQueries.getCountry()
       }
     }
   }
