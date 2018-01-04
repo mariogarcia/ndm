@@ -13,5 +13,5 @@ class WordFrequency {
   /**
    * @since 0.1.0
    */
-  Integer ocurrences
+  Integer frequency
 }
