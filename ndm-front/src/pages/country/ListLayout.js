@@ -1,33 +1,32 @@
-import React, { Component } from 'react';
-import { Country} from '../../services/Country';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Grid, Row, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
-export class List extends Component {
+import { Country } from '../../services/Country'
+import { CountryList } from '../../components/CountryList'
 
-    constructor() {
-        super();
-        this.state = {
-            countries: null
-        };
-
-    }
-
-    componentDidMount() {
-        let countries = Country
-            .listAll()
-            .map(el => <li key={el}><Link to={'/country/' + el}>{el}</Link></li>);
-
-        this.setState({ countries: countries });
-    }
-
-    render() {
-        return (
-            <div>
+const List = ({countries}) => (
+    <Grid>
+        <Row>
+            <Col xs={12}>
                 <h1>Countries</h1>
-                <ul>
-                    {this.state.countries}
-                </ul>
-            </div>
-        );
-    }
+                <CountryList countries={countries}/>
+            </Col>
+        </Row>
+    </Grid>
+)
+
+const getCountries = () => {
+    Country.listAll()
 }
+
+const mapStateToProps = state => {
+  return {
+    countries: getCountries(state.country)
+  }
+}
+
+const ListLayout = connect(mapStateToProps)(List)
+
+export default ListLayout

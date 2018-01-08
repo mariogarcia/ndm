@@ -3,10 +3,10 @@
 export let Country = {
 
     listAll: () => [
-        "USA",
-        "Spain",
-        "France",
-        "Vietnam"
+        {name: "USA"},
+        {name: "Spain"},
+        {name: "France"},
+        {name: "Vietnam"}
     ]
 
 }

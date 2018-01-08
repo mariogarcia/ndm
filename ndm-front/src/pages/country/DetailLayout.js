@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import SimpleBarChart from '../../components/SimpleBarChart'
-import TwoLevelPieChart from '../../components/TwoLevelPieChart'
-import NewspaperList from '../../components/NewspaperList'
 import FigurePanel from '../../components/FigurePanel'
 
 import {
@@ -56,45 +53,9 @@ export class Detail extends Component {
         return (
             <Grid>
                 <Row>
-                    <Col xs={6}>
-                        <FigurePanel title="Country" value="Spain"/>
-                    </Col>
-                    <Col xs={2}>
-                        <FigurePanel title="Newspapers" value="120"/>
-                    </Col>
-                    <Col xs={2}>
-                        <FigurePanel title="Articles" value="12.000"/>
-                    </Col>
-                    <Col xs={2}>
-                        <FigurePanel title="Authors" value="220"/>
-                    </Col>
-                </Row>
-                <Row>
                     <Col xs={12}>
-                        <Panel header="Tags">
-                            <TagCloud className="text-center" minSize={20}
-                                      maxSize={36}
-                                      colorOptions={options}
-                                      tags={tags}/>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={8}>
-                        <Panel header="Categories">
-                            <SimpleBarChart/>
-                        </Panel>
-                    </Col>
-                    <Col xs={4}>
-                        <Panel header="Love/Hate">
-                            <TwoLevelPieChart/>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Panel header="Categories">
-                            <NewspaperList/>
+                        <Panel header="Spain">
+
                         </Panel>
                     </Col>
                 </Row>

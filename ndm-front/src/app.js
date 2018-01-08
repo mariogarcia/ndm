@@ -35,7 +35,7 @@ export class App extends Component {
                                       </Navbar.Brand>
                                   </Navbar.Header>
                                   <Nav>
-                                      <NavItem eventKey={1} href="#">By country</NavItem>
+                                      <NavItem eventKey={1} href="#">Countries</NavItem>
                                       <NavItem eventKey={1} href="#">By newspaper</NavItem>
                                       <NavItem eventKey={1} href="#">Day on images</NavItem>
                                   </Nav>
@@ -46,7 +46,6 @@ export class App extends Component {
                   <Row>
                       <Col xs={12}>
                           <Switch>
-                              <Route path="/country" exact={true} component={CountryListPage}/>
                               <Route path="/country/:site" exact={true} component={CountryDetailPage}/>
                           </Switch>
                       </Col>
