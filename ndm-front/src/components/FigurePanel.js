@@ -7,7 +7,7 @@ import { Panel } from 'react-bootstrap'
  *
  * @since 0.1.0
  */
-class FigurePanel extends React.Component {
+export class FigurePanel extends React.Component {
 
     /**
      * Renders the component

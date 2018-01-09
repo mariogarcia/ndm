@@ -54,9 +54,7 @@ export class Detail extends Component {
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <Panel header="Spain">
-
-                        </Panel>
+                        <FigurePanel title="a" value="1"/>
                     </Col>
                 </Row>
             </Grid>
