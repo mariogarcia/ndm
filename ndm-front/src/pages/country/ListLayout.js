@@ -1,32 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Pager,Grid, Row, Col, Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-import { Country } from '../../services/Country'
-import { CountryList } from '../../components/CountryList'
+import { FigurePanel } from '../../components/FigurePanel'
+import { CountryTable } from '../../components/CountryTable'
 
-const List = ({countries}) => (
-    <Grid>
-        <Row>
-            <Col xs={12}>
-                <h1>Countries</h1>
-                <CountryList countries={countries}/>
-            </Col>
-        </Row>
-    </Grid>
-)
+/**
+ * @since 0.1.0
+ */
+export class ListLayout extends React.Component {
 
-const getCountries = () => {
-    Country.listAll()
+    render() {
+        return (
+            <Grid>
+                <Row>
+                    <Col xs={12}>
+                        <FigurePanel title="Registered Countries" value="112"/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <CountryTable countries={Array.of()} onClick={() => alert("aa")}/>
+                    </Col>
+                </Row>
+            </Grid>
+        )
+    }
 }
-
-const mapStateToProps = state => {
-  return {
-    countries: getCountries(state.country)
-  }
-}
-
-const ListLayout = connect(mapStateToProps)(List)
 
 export default ListLayout

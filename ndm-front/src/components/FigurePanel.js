@@ -7,20 +7,10 @@ import { Panel } from 'react-bootstrap'
  *
  * @since 0.1.0
  */
-export class FigurePanel extends React.Component {
-
-    /**
-     * Renders the component
-     *
-     * @return the component
-     */
-    render() {
-        return (
-            <Panel header={this.props.title}>
-                <h1 className="text-center">{this.props.value}</h1>
-            </Panel>
-        )
-    }
-}
+export const FigurePanel = ({title, value}) => (
+    <Panel header={title}>
+        <h1 className="text-center">{value}</h1>
+    </Panel>
+)
 
 export default FigurePanel

@@ -1,1 +1,1 @@
-export { Detail as CountryDetailPage } from './pages/country/DetailLayout';
+export { ListLayout as CountryListPage } from './pages/country/ListLayout';

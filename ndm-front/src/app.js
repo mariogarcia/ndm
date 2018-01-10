@@ -8,10 +8,7 @@ import {
     Col
 } from 'react-bootstrap';
 
-import {
-    CountryListPage,
-    CountryDetailPage
-} from './pages';
+import { ListLayout } from './pages/country/ListLayout';
 
 import {
     BrowserRouter as Router,
@@ -27,26 +24,29 @@ export class App extends Component {
               <Grid>
                   <Row>
                       <Col xs={12}>
-                          <div className="container">
-                              <Navbar>
-                                  <Navbar.Header>
-                                      <Navbar.Brand>
-                                          <a href="#">NewsDoMaths</a>
-                                      </Navbar.Brand>
-                                  </Navbar.Header>
-                                  <Nav>
-                                      <NavItem eventKey={1} href="#">Countries</NavItem>
-                                      <NavItem eventKey={1} href="#">By newspaper</NavItem>
-                                      <NavItem eventKey={1} href="#">Day on images</NavItem>
-                                  </Nav>
-                              </Navbar>
-                          </div>
+                          <Grid>
+                              <Row>
+                                  <Col xs={12}>
+                                      <Navbar>
+                                          <Navbar.Header>
+                                              <Navbar.Brand>
+                                                  <a href="#">NewsDoMaths</a>
+                                              </Navbar.Brand>
+                                          </Navbar.Header>
+                                          <Nav>
+                                              <NavItem href="/country">Countries</NavItem>
+                                              <NavItem href="/newspaper">Newspapers</NavItem>
+                                          </Nav>
+                                      </Navbar>
+                                  </Col>
+                              </Row>
+                          </Grid>
                       </Col>
                   </Row>
                   <Row>
                       <Col xs={12}>
                           <Switch>
-                              <Route path="/country/:site" exact={true} component={CountryDetailPage}/>
+                              <Route path="/country" exact={true} component={ListLayout}/>
                           </Switch>
                       </Col>
                   </Row>
