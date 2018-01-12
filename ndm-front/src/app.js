@@ -8,14 +8,14 @@ import {
     Col
 } from 'react-bootstrap';
 
-import { ListLayout } from './pages/country/ListLayout';
+import { ListLayoutContainer } from './pages/country/ListLayout';
 
 import {
     BrowserRouter as Router,
     Switch,
     Link,
     Route
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 export class App extends Component {
   render() {
@@ -46,7 +46,7 @@ export class App extends Component {
                   <Row>
                       <Col xs={12}>
                           <Switch>
-                              <Route path="/country" exact={true} component={ListLayout}/>
+                              <Route path="/country" exact={true} component={ListLayoutContainer}/>
                           </Switch>
                       </Col>
                   </Row>

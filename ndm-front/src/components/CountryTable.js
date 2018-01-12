@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Pager, Table } from 'react-bootstrap'
+import { Pager, Table, Glyphicon, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
+import styles from './CountryTable.css'
 
 /**
  * Represents a given Country information
  *
  * @since 0.1.0
  */
-const CountryRow = ({key, onClick, country}) => (
+const CountryRow = ({country, onDelete, onEdit}) => (
     <tr>
-        <td>{country.id}</td>
-        <td>{country.name}</td>
+        <td className="id">
+            <Link to={"/country/" + country.id}>{country.id}</Link>
+        </td>
+        <td><Link to={"/country/" + country.id}>{country.name}</Link></td>
         <td>{country.newspapers}</td>
+        <td>
+            <Button onClick={onDelete}><Glyphicon glyph="trash" /></Button>
+            <Button onClick={onEdit}><Glyphicon glyph="pencil" /></Button>
+        </td>
     </tr>
 )
 
@@ -20,38 +29,30 @@ const CountryRow = ({key, onClick, country}) => (
  *
  * @since 0.1.0
  */
-export const CountryTable = ({countries, onClick}) => (
+export const CountryTable = ({countries, onEdit, onDelete}) => (
     <Table striped bordered condensed hover>
 		<thead>
 			<tr>
-				<th>#</th>
+				<th className={styles.id}>#</th>
 				<th>Name</th>
 				<th>Newspapers</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {countries.map((country, index) => (
-                <CountryRow key={index} {...country} onClick={() => onClick(country.id)} />
+                <CountryRow
+                    key={country.id}
+                    country={country}
+                    onDelete={onDelete}
+                    onEdit={onEdit}/>
             ))}
         </tbody>
-        <tfooter>
-            <tr>
-                <td colspan="3">
-                    <Pager>
-		                <Pager.Item previous href="#">
-			                &larr; Previous
-		                </Pager.Item>
-		                <Pager.Item next href="#">
-			                Next &rarr;
-		                </Pager.Item>
-	                </Pager>
-                </td>
-            </tr>
-        </tfooter>
     </Table>
 )
 
 
 CountryTable.propTypes = {
-    onClick: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired
 }
