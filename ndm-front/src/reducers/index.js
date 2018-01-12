@@ -1,11 +1,16 @@
 import { Country } from '../services/Country'
 import { combineReducers } from 'redux'
 
+export const actionTypes = {
+    DETAIL: "@ndm/UI/countries/DETAIL",
+    DELETE: "@ndm/UI/countries/DELETE"
+}
+
 const actions = (state = [], action) => {
     console.log(action)
 
     switch (action.type) {
-    case 'COUNTRY_DETAIL':
+    case actionTypes.DETAIL:
         return [
             ...state,
             {
@@ -14,7 +19,7 @@ const actions = (state = [], action) => {
                 }
             }
         ]
-    case 'COUNTRY_DELETE':
+    case actionTypes.DELETE:
         return [
             ...state,
             {
