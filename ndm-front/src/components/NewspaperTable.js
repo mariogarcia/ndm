@@ -32,7 +32,7 @@ export const NewspaperTable = ({newspapers}) => (
         </thead>
         <tbody>
             {newspapers.map((newspaper, index) => (
-                <NewspaperRow newspaper={newspaper}/>
+                <NewspaperRow key={index} newspaper={newspaper}/>
             ))}
         </tbody>
     </Table>

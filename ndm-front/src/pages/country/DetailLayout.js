@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import { FigurePanel } from '../../components/FigurePanel'
 import { NewspaperTable } from '../../components/NewspaperTable'
@@ -21,10 +22,14 @@ const DetailLayout = ({newspapers}) => (
     </Grid>
 )
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    const countryId = ownProps.match.params.id
+
     return {
-        newspapers: Newspaper.listAll()
+        newspapers: Newspaper.listAll(countryId)
     }
 }
 
-export const DetailLayoutContainer = connect(mapStateToProps)(DetailLayout)
+export const DetailLayoutContainer = withRouter(connect(
+    mapStateToProps
+)(DetailLayout))
