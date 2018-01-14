@@ -1,5 +1,6 @@
 import React from 'react'
 import { Panel } from 'react-bootstrap'
+import NumberFormat from 'react-number-format'
 
 /**
  * Shows a panel with an important figure inside. The panel has a
@@ -9,7 +10,12 @@ import { Panel } from 'react-bootstrap'
  */
 export const FigurePanel = ({title, value}) => (
     <Panel header={title}>
-        <h1 className="text-center">{value}</h1>
+        <h1 className="text-center">
+            <NumberFormat
+                value={value}
+                thousandSeparator={true}
+                displayType="text"/>
+        </h1>
     </Panel>
 )
 

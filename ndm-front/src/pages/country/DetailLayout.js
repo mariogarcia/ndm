@@ -30,8 +30,14 @@ class DetailLayout extends React.Component {
         return (
             <Grid>
                 <Row>
-                    <Col xs={12}>
-                        <FigurePanel title="Registered Newspapers" value="14"/>
+                    <Col xs={4}>
+                        <FigurePanel title="Registered Newspapers" value={this.state.country.noNewspapers}/>
+                    </Col>
+                    <Col xs={4}>
+                        <FigurePanel title="Registered Articles" value={this.state.country.noArticles}/>
+                    </Col>
+                    <Col xs={4}>
+                        <FigurePanel title="Registered Authors" value={this.state.country.noAuthors}/>
                     </Col>
                 </Row>
                 <Row>
