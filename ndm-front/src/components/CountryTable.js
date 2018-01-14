@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, Glyphicon, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import NumberFormat from 'react-number-format'
 
 import styles from './CountryTable.css'
 
@@ -16,10 +17,23 @@ const CountryRow = ({country, onDelete, onEdit}) => (
             <Link to={"/country/" + country.id}>{country.id}</Link>
         </td>
         <td><Link to={"/country/" + country.id}>{country.name}</Link></td>
-        <td>{country.newspapers}</td>
         <td>
-            <Button onClick={onDelete}><Glyphicon glyph="trash" /></Button>
-            <Button onClick={onEdit}><Glyphicon glyph="pencil" /></Button>
+            <NumberFormat
+                value={country.noNewspapers}
+                thousandSeparator={true}
+                displayType="text"/>
+        </td>
+        <td>
+            <NumberFormat
+                value={country.noArticles}
+                thousandSeparator={true}
+                displayType="text"/>
+        </td>
+        <td>
+            <NumberFormat
+                value={country.noAuthors}
+                thousandSeparator={true}
+                displayType="text"/>
         </td>
     </tr>
 )
@@ -36,7 +50,8 @@ export const CountryTable = ({countries, onEdit, onDelete}) => (
 				<th className={styles.id}>#</th>
 				<th>Name</th>
 				<th>Newspapers</th>
-                <th>Actions</th>
+                <th>Articles</th>
+                <th>Authors</th>
             </tr>
         </thead>
         <tbody>
