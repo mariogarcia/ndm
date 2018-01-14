@@ -14,7 +14,6 @@ import { DetailLayoutContainer } from './pages/country/DetailLayout';
 import {
     BrowserRouter as Router,
     Switch,
-    Link,
     Route
 } from 'react-router-dom'
 
@@ -31,7 +30,7 @@ export class App extends Component {
                                       <Navbar>
                                           <Navbar.Header>
                                               <Navbar.Brand>
-                                                  <a href="#">NewsDoMaths</a>
+                                                  <a>NewsDoMaths</a>
                                               </Navbar.Brand>
                                           </Navbar.Header>
                                           <Nav>

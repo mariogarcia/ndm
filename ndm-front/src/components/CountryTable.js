@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Pager, Table, Glyphicon, Button } from 'react-bootstrap'
+import { Table, Glyphicon, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import styles from './CountryTable.css'

@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Pager, Table, Glyphicon, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Table } from 'react-bootstrap'
 
 /**
  * Represents a given Newspaper information

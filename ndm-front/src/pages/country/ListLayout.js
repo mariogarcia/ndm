@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Pager,Grid, Row, Col, Table, Button } from 'react-bootstrap'
+import React from 'react'
+import { Grid, Row, Col, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import { FigurePanel } from '../../components/FigurePanel'
