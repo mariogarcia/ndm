@@ -23,10 +23,18 @@ class Utils {
    * @since 0.1.0
    */
   static Handler createBindingHandler(final Class clazz) {
-    return { Context ctx -> ctx.parse(clazz).then(addToNext(ctx)) } as Handler
+    return { Context ctx ->
+      ctx
+        .parse(clazz)
+        .mapError { Throwable th -> [:] }
+        .then(addToNext(ctx))
+
+    } as Handler
   }
 
   private static <T> Action<? super T> addToNext(final Context ctx) {
-    return { T action -> ctx.next(Registry.single(action)) } as Action<? super T>
+    return { T action ->
+      ctx.next(Registry.single(action))
+    } as Action<? super T>
   }
 }

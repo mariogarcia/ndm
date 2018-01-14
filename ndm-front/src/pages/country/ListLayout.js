@@ -14,32 +14,48 @@ import {
 /**
  * @since 0.1.0
  */
-const ListLayout = ({countries, onDelete, onEdit}) => (
-    <Grid>
-        <Row>
-            <Col xs={12}>
-                <FigurePanel title="Registered Countries" value="112"/>
-            </Col>
-        </Row>
-        <Row>
-            <Col xs={12}>
-                <CountryTable
-                    countries={countries}
-                    onDelete={onDelete}
-                    onEdit={onEdit}/>
-            </Col>
-        </Row>
-        <Row>
-            <Col xs={12}>
-                <Button bsStyle="primary">New</Button>
-            </Col>
-        </Row>
-    </Grid>
-)
+class ListLayout extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {countries: Array.of()}
+    }
+
+    componentDidMount() {
+        Country.listAll().then((data) => {
+            this.setState({countries: data.data.data.countries})
+        })
+    }
+
+    render() {
+        return (
+            <Grid>
+                <Row>
+                    <Col xs={12}>
+                        <FigurePanel title="Registered Countries" value="112"/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <CountryTable
+                            countries={this.state.countries}
+                            onDelete={() => alert("")}
+                            onEdit={() => alert("")}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <Button bsStyle="primary">New</Button>
+                    </Col>
+                </Row>
+            </Grid>
+        )
+    }
+}
 
 const mapStateToProps = state => {
     return {
-        countries: Country.listAll()
+        countries: Array.of()
     }
 }
 

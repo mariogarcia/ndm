@@ -42,11 +42,12 @@ export const CountryTable = ({countries, onEdit, onDelete}) => (
         <tbody>
             {countries.map((country, index) => (
                 <CountryRow
-                    key={country.id}
+                    key={index}
                     country={country}
                     onDelete={onDelete}
                     onEdit={onEdit}/>
             ))}
+
         </tbody>
     </Table>
 )

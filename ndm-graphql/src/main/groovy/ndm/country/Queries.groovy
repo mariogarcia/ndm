@@ -14,20 +14,43 @@ class Queries {
 
       type Types.CountryType
       fetcher { DataFetchingEnvironment env ->
+        return mockedCountry
+      }
+    }
+  }
+
+
+  GraphQLFieldDefinition listAll() {
+    return DSL.field('countries') {
+      description 'list all available countries'
+
+      type list(Types.CountryType)
+      fetcher { DataFetchingEnvironment env ->
         return [
+          mockedCountry,
+          mockedCountry
+        ]
+      }
+    }
+
+  }
+
+  Map getMockedCountry() {
+    return [
           name: 'Spain',
           noAuthors: 123,
           noNewspapers: 234,
           noArticles: 10232,
           newspapers: [
-            [name: 'El Mundo', site: 'www.elmundo.es', relevantWords: []]
+            [name: 'El Mundo', site: 'www.elmundo.es', relevantWords: []],
+            [name: 'El Pais', site: 'www.elpais.com', relevantWords: []],
+            [name: 'ABC', site: 'www.abc.es', relevantWords: []],
           ],
           relevantWords: [
             [word: 'A', frequency:3030],
             [word: 'B', frequency:2000]
           ]
-        ]
-      }
-    }
+    ]
   }
+
 }
