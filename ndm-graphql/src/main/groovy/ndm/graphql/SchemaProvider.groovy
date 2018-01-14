@@ -26,7 +26,7 @@ class SchemaProvider implements Provider<GraphQLSchema> {
       queries {
         addField graphQLSystem.getSystemStatus()
         addField countryQueries.listAll()
-        addField countryQueries.getCountry()
+        addField countryQueries.findById()
       }
     }
   }

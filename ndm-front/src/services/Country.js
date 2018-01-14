@@ -16,6 +16,7 @@ export let Country = {
               .post(Config.GRAPHQL_API, {
                   query: "{ \
                     countries { \
+                      id \
                       name \
                       noNewspapers \
                       noArticles \

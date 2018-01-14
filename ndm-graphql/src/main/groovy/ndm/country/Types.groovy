@@ -27,6 +27,7 @@ class Types {
   static final GraphQLObjectType CountryType = DSL.type('Country') {
     description 'Returns statistical information about a given country'
 
+    field 'id', GraphQLBigInteger
     field 'name', GraphQLString
     field 'noAuthors', GraphQLBigInteger
     field 'noNewspapers', GraphQLBigInteger

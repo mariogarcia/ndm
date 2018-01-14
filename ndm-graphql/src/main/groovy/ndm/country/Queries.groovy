@@ -8,13 +8,14 @@ import javax.inject.Inject
 
 class Queries {
 
-  GraphQLFieldDefinition getCountry() {
+  GraphQLFieldDefinition findById() {
     return DSL.field('country') {
       description 'shows system current status'
 
       type Types.CountryType
+      argument 'id', GraphQLBigInteger
       fetcher { DataFetchingEnvironment env ->
-        return mockedCountry
+        return [mockedCountry, anotherMockedCountry].find { it.id == env.arguments.id }
       }
     }
   }
@@ -37,6 +38,7 @@ class Queries {
 
   Map getMockedCountry() {
     return [
+      id: 1,
           name: 'Spain',
           noAuthors: 1230,
           noNewspapers: 2340,
@@ -55,6 +57,7 @@ class Queries {
 
   Map getAnotherMockedCountry() {
     return [
+      id: 2,
           name: 'France',
           noAuthors: 8230,
           noNewspapers: 5340,
