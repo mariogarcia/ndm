@@ -37,6 +37,6 @@ class Service {
    * @since 0.1.0
    */
   Map findById(DataFetchingEnvironment env) {
-    return sql.firstRow(/SELECT * FROM ndm.country where id = ?/, env.arguments.id)
+    return sql.firstRow(/SELECT * FROM ndm.country where id = ?/, env.arguments.id) as Map
   }
 }

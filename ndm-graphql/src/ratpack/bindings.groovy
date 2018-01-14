@@ -7,6 +7,8 @@ import ndm.graphql.HandlerModule
 import ndm.db.DataSourceModule
 import ndm.init.InitModule
 
+import ndm.country.Module as CountryModule
+
 ratpack {
   bindings {
     module SystemModule
@@ -14,5 +16,6 @@ ratpack {
     module DataSourceModule
     module InitModule
     module SqlModule
+    module CountryModule
   }
 }
