@@ -42,11 +42,6 @@ class ListLayout extends React.Component {
                             onEdit={() => alert("")}/>
                     </Col>
                 </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Button bsStyle="primary">New</Button>
-                    </Col>
-                </Row>
             </Grid>
         )
     }
