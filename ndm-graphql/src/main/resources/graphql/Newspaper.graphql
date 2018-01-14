@@ -1,0 +1,5 @@
+type Newspaper {
+  id: String
+  name: String
+  link: String
+}

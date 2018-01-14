@@ -1,0 +1,8 @@
+type Query {
+  countries: [Country]
+  country(id: String!): Country
+}
+
+schema {
+  query: Query
+}

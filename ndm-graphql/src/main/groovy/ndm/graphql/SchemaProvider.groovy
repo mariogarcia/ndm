@@ -1,14 +1,13 @@
 package ndm.graphql
 
-import static gql.DSL.schema
+import static gql.DSL.mergeSchemas
 
 import graphql.schema.GraphQLSchema
 
 import javax.inject.Inject
 import javax.inject.Provider
 
-import ndm.system.SystemGraphQL
-import ndm.country.Queries as CountryQueries
+import ndm.country.Service as CountryService
 
 /**
  * Provides a singleton instance of the {@link GraphQLSchema} type
@@ -17,16 +16,20 @@ import ndm.country.Queries as CountryQueries
  */
 class SchemaProvider implements Provider<GraphQLSchema> {
 
-  @Inject SystemGraphQL graphQLSystem
-  @Inject CountryQueries countryQueries
+  @Inject
+  CountryService countryService
 
   @Override
   GraphQLSchema get() {
-    return schema {
-      queries {
-        addField graphQLSystem.getSystemStatus()
-        addField countryQueries.listAll()
-        addField countryQueries.findById()
+    return mergeSchemas {
+      byResource('graphql/Common.graphql')
+      byResource('graphql/Newspaper.graphql')
+      byResource('graphql/Country.graphql')
+      byResource('graphql/Schema.graphql') {
+        mapType('Query') {
+          link('countries', countryService.&listAll)
+          link('country', countryService.&findById)
+        }
       }
     }
   }

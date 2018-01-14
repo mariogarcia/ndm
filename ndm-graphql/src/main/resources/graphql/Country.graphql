@@ -1,0 +1,11 @@
+type Country {
+  id: String
+  name: String!
+
+  noAuthors: Int
+  noNewspapers: Int
+  noArticles: Int
+
+  relevantWords: [WordFrequency]
+  newspapers: [Newspaper]
+}
