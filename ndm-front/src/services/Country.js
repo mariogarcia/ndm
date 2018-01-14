@@ -1,32 +1,34 @@
 import axios from 'axios'
 
+import { Config } from '../config/app'
+
+const INSTANCE = axios.create({
+    timeout: 1000,
+    headers: {
+        'Accept': 'application/json'
+    }
+});
+
 export let Country = {
 
     listAll: () => {
-        var instance = axios.create({
-            timeout: 1000,
-            headers: {
-                'Accept': 'application/json'
-            }
+        return INSTANCE
+              .post(Config.GRAPHQL_API, {
+                  query: "{ \
+                    countries { \
+                      name \
+                      noNewspapers \
+                      noArticles \
+                      noAuthors \
+                    } \
+                  }",
+              })
+    },
 
-        });
-        const promise = instance
-              .post('http://localhost:8888/graphql',
-                    {
-                           query: " \
-                             { \
-                               countries { \
-                                 name \
-                                 noNewspapers \
-                                 noArticles \
-                                 noAuthors \
-                               } \
-                             } \
-                           ",
-
-                    })
-
-        return promise
+    findById: (id) => {
+        return INSTANCE
+            .post(Config.GRAPHQL_API, {
+                query: ""
+            })
     }
-
 }
