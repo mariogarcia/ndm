@@ -20,7 +20,7 @@ class Types {
   static final GraphQLObjectType NewspaperType = DSL.type('Newspaper') {
     description 'Basic information about an online newspaper'
 
-    field 'id', GraphQLBigInteger
+    field 'id', GraphQLString
     field 'name', GraphQLString
     field 'link', GraphQLString
   }
@@ -28,7 +28,7 @@ class Types {
   static final GraphQLObjectType CountryType = DSL.type('Country') {
     description 'Returns statistical information about a given country'
 
-    field 'id', GraphQLBigInteger
+    field 'id', GraphQLString
     field 'name', GraphQLString
     field 'noAuthors', GraphQLBigInteger
     field 'noNewspapers', GraphQLBigInteger

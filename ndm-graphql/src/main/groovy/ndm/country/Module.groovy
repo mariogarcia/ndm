@@ -10,6 +10,7 @@ class Module extends AbstractModule {
 
   @Override
   protected void configure() {
+    bind(Service).in(Scopes.SINGLETON)
     bind(Queries).in(Scopes.SINGLETON)
   }
 }
