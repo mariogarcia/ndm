@@ -44,9 +44,9 @@ class Queries {
           noNewspapers: 2340,
           noArticles: 10232,
           newspapers: [
-            [name: 'El Mundo', site: 'www.elmundo.es', relevantWords: []],
-            [name: 'El Pais', site: 'www.elpais.com', relevantWords: []],
-            [name: 'ABC', site: 'www.abc.es', relevantWords: []],
+            [id: 1, name: 'El Mundo', link: 'http://www.elmundo.es', relevantWords: []],
+            [id: 2, name: 'El Pais', link: 'http://www.elpais.com', relevantWords: []],
+            [id: 3, name: 'ABC', link: 'http://www.abc.es', relevantWords: []],
           ],
           relevantWords: [
             [word: 'A', frequency:3030],
@@ -63,9 +63,8 @@ class Queries {
           noNewspapers: 5340,
           noArticles: 20232,
           newspapers: [
-            [name: 'El Mundo', site: 'www.elmundo.es', relevantWords: []],
-            [name: 'El Pais', site: 'www.elpais.com', relevantWords: []],
-            [name: 'ABC', site: 'www.abc.es', relevantWords: []],
+            [id: 4, name: 'France Soir', link: 'http://www.francesoir.fr', relevantWords: []],
+            [id: 5, name: 'Le Figaro', link: 'http://plus.lefigaro.fr/cercle/le-figaro-in-english/', relevantWords: []],
           ],
           relevantWords: [
             [word: 'A', frequency:3030],

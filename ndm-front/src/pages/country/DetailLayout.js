@@ -5,28 +5,50 @@ import { withRouter } from 'react-router'
 
 import { FigurePanel } from '../../components/FigurePanel'
 import { NewspaperTable } from '../../components/NewspaperTable'
-import { Newspaper } from '../../services/Newspaper'
+import { Country } from '../../services/Country'
 
-const DetailLayout = ({newspapers}) => (
-    <Grid>
-        <Row>
-            <Col xs={12}>
-                <FigurePanel title="Registered Newspapers" value="14"/>
-            </Col>
-        </Row>
-        <Row>
-            <Col xs={12}>
-                <NewspaperTable newspapers={newspapers}/>
-            </Col>
-        </Row>
-    </Grid>
-)
+
+class DetailLayout extends React.Component {
+
+    constructor(props) {
+        super()
+        this.state = {
+            country: {
+                newspapers: Array.of()
+            }
+        }
+    }
+
+    componentDidMount() {
+        this.props.data.then((data) => {
+            console.log(data.data.data.country)
+            this.setState({country: data.data.data.country})
+        })
+    }
+
+    render() {
+        return (
+            <Grid>
+                <Row>
+                    <Col xs={12}>
+                        <FigurePanel title="Registered Newspapers" value="14"/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <NewspaperTable newspapers={this.state.country.newspapers}/>
+                    </Col>
+                </Row>
+            </Grid>
+        )
+    }
+}
 
 const mapStateToProps = (state, ownProps) => {
     const countryId = ownProps.match.params.id
 
     return {
-        newspapers: Newspaper.listAll(countryId)
+        data: Country.findById(countryId)
     }
 }
 

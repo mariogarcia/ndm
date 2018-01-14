@@ -29,7 +29,20 @@ export let Country = {
     findById: (id) => {
         return INSTANCE
             .post(Config.GRAPHQL_API, {
-                query: ""
+                query: `{ \
+                  country(id: ${id}) { \
+                    id \
+                    name \
+                    noNewspapers \
+                    noArticles \
+                    noAuthors \
+                    newspapers { \
+                       id \
+                       name \
+                       link \
+                    } \
+                  } \
+                }`
             })
     }
 }
