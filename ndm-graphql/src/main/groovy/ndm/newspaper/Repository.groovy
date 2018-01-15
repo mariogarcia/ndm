@@ -36,6 +36,9 @@ class Repository {
    * @since 0.1.0
    */
   Integer countByCountry(String id) {
-    return sql.firstRow('SELECT count(*) FROM ndm.newspaper WHERE country_id = ?', "$id") as Integer
+    UUID uuid = UUID.fromString(id)
+    return sql
+      .firstRow('SELECT count(*) as no FROM ndm.newspaper WHERE country_id = ?', uuid)
+      .no as Integer
   }
 }

@@ -36,7 +36,8 @@ class Service {
    * @return how many newspapers belong to a country
    * @since 0.1.0
    */
+  @groovy.transform.CompileDynamic
   Integer countByCountry(DataFetchingEnvironment env) {
-    return repository.countByCountry("${env.arguments.id}")
+    return repository.countByCountry("${env.source.id}")
   }
 }

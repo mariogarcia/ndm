@@ -9,7 +9,7 @@ CREATE TABLE ndm.newspaper(
   id UUID PRIMARY KEY,
   name varchar(100),
   link varchar(500),
-  country_id INT,
+  country_id UUID,
   FOREIGN KEY (country_id) REFERENCES ndm.country(id)
 );
 
