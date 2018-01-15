@@ -2,41 +2,40 @@ package ndm.newspaper
 
 import groovy.sql.Sql
 import javax.inject.Inject
-import graphql.schema.DataFetchingEnvironment
 
 /**
  * Service to deal with newspaper related queries
  *
  * @since 0.1.0
  */
-class Service {
+class Repository {
 
   /**
    * {@link Sql} instance
    *
    * @since 0.1.0
    */
-  @Inject Repository repository
+  @Inject Sql sql
 
   /**
    * List all available newspapers in a given country
    *
-   * @param env
+   * @param id
    * @return a list of newspapers
    * @since 0.1.0
    */
-  List<Map> findAllByCountry(DataFetchingEnvironment env) {
-    return repository.findAllByCountry("${env.arguments.id}")
+  List<Map> findAllByCountry(String id) {
+    return sql.rows("SELECT * FROM ndm.newspaper where country_id = ?", "$id") as List<Map>
   }
 
   /**
    * List all available newspapers in a given country
    *
-   * @param env
+   * @param id
    * @return how many newspapers belong to a country
    * @since 0.1.0
    */
-  Integer countByCountry(DataFetchingEnvironment env) {
-    return repository.countByCountry("${env.arguments.id}")
+  Integer countByCountry(String id) {
+    return sql.firstRow('SELECT count(*) FROM ndm.newspaper WHERE country_id = ?', "$id") as Integer
   }
 }
