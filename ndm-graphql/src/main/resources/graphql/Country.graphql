@@ -1,11 +1,24 @@
+# Country where newspapers belong
 type Country {
+
+  # DB id of the Country
   id: String
+
+  # English name of the country
   name: String!
 
+  # Counter of authors today
   noAuthors: Int
+
+  # Counter of newspapers today
   noNewspapers: Int
+
+  # Counter of articles today
   noArticles: Int
 
+  # Relevant words appearing today in this country's newspapers
   relevantWords: [WordFrequency]
+
+  # Newspapers registered for that country
   newspapers: [Newspaper]
 }

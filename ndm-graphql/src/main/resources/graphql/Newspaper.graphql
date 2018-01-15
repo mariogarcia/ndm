@@ -1,5 +1,12 @@
+# Represents a given online newspaper
 type Newspaper {
+
+  # DB id of the newspaper
   id: String
+
+  # Name of the newspaper
   name: String
+
+  # Web site of the newspaper
   link: String
 }
