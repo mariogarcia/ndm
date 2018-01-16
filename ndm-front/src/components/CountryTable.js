@@ -11,10 +11,10 @@ import styles from './CountryTable.css'
  *
  * @since 0.1.0
  */
-const CountryRow = ({country, onDelete, onEdit}) => (
+const CountryRow = ({index, country, onDelete, onEdit}) => (
     <tr>
         <td className="id">
-            <Link to={"/country/" + country.id}>{country.id}</Link>
+            <Link to={"/country/" + country.id}>{index}</Link>
         </td>
         <td><Link to={"/country/" + country.id}>{country.name}</Link></td>
         <td>
@@ -57,7 +57,8 @@ export const CountryTable = ({countries, onEdit, onDelete}) => (
         <tbody>
             {countries.map((country, index) => (
                 <CountryRow
-                    key={index}
+                key={index}
+                index={index}
                     country={country}
                     onDelete={onDelete}
                     onEdit={onEdit}/>

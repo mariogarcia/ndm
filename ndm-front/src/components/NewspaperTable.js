@@ -6,9 +6,9 @@ import { Table } from 'react-bootstrap'
  *
  * @since 0.1.0
  */
-const NewspaperRow = ({newspaper}) => (
+const NewspaperRow = ({index, newspaper}) => (
     <tr>
-        <td className="id">{newspaper.id}</td>
+        <td className="id">{index}</td>
         <td>{newspaper.name}</td>
         <td>{newspaper.link}</td>
     </tr>
@@ -30,7 +30,7 @@ export const NewspaperTable = ({newspapers}) => (
         </thead>
         <tbody>
             {newspapers.map((newspaper, index) => (
-                <NewspaperRow key={index} newspaper={newspaper}/>
+                    <NewspaperRow key={index} index={index} newspaper={newspaper}/>
             ))}
         </tbody>
     </Table>
