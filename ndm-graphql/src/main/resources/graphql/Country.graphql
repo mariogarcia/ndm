@@ -22,3 +22,8 @@ type Country {
   # Newspapers registered for that country
   newspapers: [Newspaper]
 }
+
+
+type CountryStats {
+  count: Int
+}

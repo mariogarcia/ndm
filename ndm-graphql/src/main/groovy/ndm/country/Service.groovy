@@ -29,6 +29,10 @@ class Service {
     return repository.listAll()
   }
 
+  Integer count(DataFetchingEnvironment env) {
+    return repository.count()
+  }
+
   /**
    * Finds a country by its id
    *

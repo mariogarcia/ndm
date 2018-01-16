@@ -35,11 +35,15 @@ class SchemaProvider implements Provider<GraphQLSchema> {
           link('noAuthors') { env -> 0 }
           link('noArticles') { env -> 0 }
         }
+        mapType('CountryStats') {
+          link('count', countryService.&count)
+        }
       }
       byResource('graphql/Schema.graphql') {
         mapType('Query') {
           link('countries', countryService.&listAll)
           link('country', countryService.&findById)
+          link('countryStats') { env -> [:] }
         }
       }
     }

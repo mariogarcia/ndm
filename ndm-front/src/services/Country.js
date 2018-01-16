@@ -15,6 +15,9 @@ export let Country = {
         return INSTANCE
               .post(Config.GRAPHQL_API, {
                   query: "{ \
+                    countryStats { \
+                      count \
+                    } \
                     countries { \
                       id \
                       name \

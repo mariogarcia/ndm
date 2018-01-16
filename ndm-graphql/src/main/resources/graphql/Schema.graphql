@@ -1,5 +1,6 @@
 type Query {
   countries: [Country]
+  countryStats: CountryStats,
   country(id: String!): Country
 }
 

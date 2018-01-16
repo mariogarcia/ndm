@@ -17,12 +17,20 @@ class ListLayout extends React.Component {
 
     constructor() {
         super()
-        this.state = {countries: Array.of()}
+        this.state = {
+            countries: Array.of(),
+            countriesCount: 0
+        }
     }
 
     componentDidMount() {
         Country.listAll().then((data) => {
-            this.setState({countries: data.data.data.countries})
+            const payload = data.data.data
+
+            this.setState({
+                countriesCount: payload.countryStats.count,
+                countries: payload.countries
+            })
         })
     }
 
@@ -31,7 +39,7 @@ class ListLayout extends React.Component {
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <FigurePanel title="Registered Countries" value="112"/>
+                        <FigurePanel title="Registered Countries" value={this.state.countriesCount}/>
                     </Col>
                 </Row>
                 <Row>

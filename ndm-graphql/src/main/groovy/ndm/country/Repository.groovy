@@ -25,6 +25,19 @@ class Repository {
    */
   List<Map> listAll() {
     return sql.rows('SELECT * FROM ndm.country') as List<Map>
+    }
+
+  /**
+   * Number of countries in database
+   *
+   * @param id
+   * @return how many countries
+   * @since 0.1.0
+   */
+  Integer count() {
+    return sql
+      .firstRow('SELECT count(*) as no FROM ndm.country')
+      .no as Integer
   }
 
   /**
