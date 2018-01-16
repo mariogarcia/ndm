@@ -35,6 +35,8 @@ class Repository {
    * @since 0.1.0
    */
   Map findById(String id) {
-    return sql.firstRow('SELECT * FROM ndm.country where id = ?', id) as Map
+    UUID uuid = UUID.fromString(id)
+
+    return sql.firstRow('SELECT * FROM ndm.country where id = ?', uuid) as Map
   }
 }

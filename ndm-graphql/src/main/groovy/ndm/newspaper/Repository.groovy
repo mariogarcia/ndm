@@ -25,7 +25,9 @@ class Repository {
    * @since 0.1.0
    */
   List<Map> findAllByCountry(String id) {
-    return sql.rows("SELECT * FROM ndm.newspaper where country_id = ?", "$id") as List<Map>
+    UUID uuid = UUID.fromString(id)
+
+    return sql.rows("SELECT * FROM ndm.newspaper where country_id = ?", uuid) as List<Map>
   }
 
   /**

@@ -26,7 +26,9 @@ class Service {
    * @since 0.1.0
    */
   List<Map> findAllByCountry(DataFetchingEnvironment env) {
-    return repository.findAllByCountry("${env.arguments.id}")
+    Map source = env.source
+
+    return repository.findAllByCountry("${source.id}")
   }
 
   /**
@@ -36,8 +38,9 @@ class Service {
    * @return how many newspapers belong to a country
    * @since 0.1.0
    */
-  @groovy.transform.CompileDynamic
   Integer countByCountry(DataFetchingEnvironment env) {
-    return repository.countByCountry("${env.source.id}")
+    Map source = env.source
+
+    return repository.countByCountry("${source.id}")
   }
 }

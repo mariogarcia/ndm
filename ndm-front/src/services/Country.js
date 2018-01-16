@@ -30,7 +30,7 @@ export let Country = {
         return INSTANCE
             .post(Config.GRAPHQL_API, {
                 query: `{ \
-                  country(id: ${id}) { \
+                  country(id: "${id}") { \
                     id \
                     name \
                     noNewspapers \
@@ -43,6 +43,7 @@ export let Country = {
                     } \
                   } \
                 }`
-            })
+            }).then((response) => response.data.data)
+            .catch((err) => console.log(err))
     }
 }
