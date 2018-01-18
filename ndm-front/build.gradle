@@ -29,11 +29,10 @@ node {
   nodeModulesDir = file("${project.projectDir}")
 }
 
-
-task ndmBuild(type: NpmTask) {
+task build(type: NpmTask) {
   args = ['run-script', 'build']
 }
 
-task ndmStart(type: NpmTask) {
+task start(type: NpmTask) {
   args = ['run-script', 'start']
 }
