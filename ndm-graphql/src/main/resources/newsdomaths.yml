@@ -1,8 +1,8 @@
 version: 0.1.0
 
 dataSource:
-  driverClassName: org.h2.Driver
-  uri: jdbc:h2:mem:test;DATABASE_TO_UPPER=false
-  username: sa
-  password:
+  driverClassName: org.postgresql.Driver
+  uri: jdbc:postgresql://db/ndm
+  username: ndm
+  password: ndm
   flywaySchemas: public,ndm

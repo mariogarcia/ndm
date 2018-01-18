@@ -13,19 +13,19 @@ CREATE TABLE ndm.newspaper(
   FOREIGN KEY (country_id) REFERENCES ndm.country(id)
 );
 
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Spain');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Italy');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'France');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Portugal');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Germany');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Belgium');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Netherlands');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Austria');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Bulgaria');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Greece');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Poland');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Ireland');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Spain');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Italy');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'France');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Portugal');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Germany');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Belgium');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Netherlands');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Austria');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Bulgaria');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Greece');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Poland');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Ireland');
 
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'United Kingdom');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'United States');
-INSERT INTO ndm.country (id, name) VALUES (RANDOM_UUID(), 'Canada');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'United Kingdom');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'United States');
+INSERT INTO ndm.country (id, name) VALUES (uuid_generate_v1(), 'Canada');

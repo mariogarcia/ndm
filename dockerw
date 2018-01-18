@@ -9,12 +9,13 @@ function usage {
 
 # Opens dev environment in a tmux session
 function run_dev {
-    docker-compose run -p 9000:9000 -p 5000:5000 -f dockerw-dev.yml dev
+    docker-compose -f dockerw-dev.yml run -p 80:3000 -p 8888:8888 dev && \
+        docker-compose -f dockerw-dev.yml stop
 }
 
 # Runs a docker compose environment as if it were production
 function run_pre {
-   docker-compose up -f dockerw-pre.yml
+   docker-compose -f dockerw-pre.yml up
 }
 
 # Builds front and back docker images ready to be deployed
