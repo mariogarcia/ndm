@@ -11,7 +11,7 @@ import styles from './CountryTable.css'
  *
  * @since 0.1.0
  */
-const CountryRow = ({index, country, onDelete, onEdit}) => (
+const CountryRow = ({index, country}) => (
     <tr>
         <td className="id">
             <Link to={"/country/" + country.id}>{index}</Link>
@@ -43,7 +43,7 @@ const CountryRow = ({index, country, onDelete, onEdit}) => (
  *
  * @since 0.1.0
  */
-export const CountryTable = ({countries, onEdit, onDelete}) => (
+export const CountryTable = ({countries}) => (
     <Table striped bordered condensed hover>
 		<thead>
 			<tr>
@@ -59,17 +59,9 @@ export const CountryTable = ({countries, onEdit, onDelete}) => (
                 <CountryRow
                 key={index}
                 index={index}
-                    country={country}
-                    onDelete={onDelete}
-                    onEdit={onEdit}/>
+                    country={country}/>
             ))}
 
         </tbody>
     </Table>
 )
-
-
-CountryTable.propTypes = {
-    onDelete: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired
-}

@@ -9,6 +9,8 @@ import javax.inject.Provider
 
 import ndm.country.Service as CountryService
 import ndm.newspaper.Service as NewspaperService
+import ndm.article.Service as ArticleService
+import ndm.author.Service as AuthorService
 
 /**
  * Provides a singleton instance of the {@link GraphQLSchema} type
@@ -23,6 +25,12 @@ class SchemaProvider implements Provider<GraphQLSchema> {
   @Inject
   NewspaperService newspaperService
 
+  @Inject
+  ArticleService articleService
+
+  @Inject
+  AuthorService authorService
+
   @Override
   GraphQLSchema get() {
     return mergeSchemas {
@@ -32,8 +40,8 @@ class SchemaProvider implements Provider<GraphQLSchema> {
         mapType('Country') {
           link('newspapers', newspaperService.&findAllByCountry)
           link('noNewspapers', newspaperService.&countByCountry)
-          link('noAuthors') { env -> 0 }
-          link('noArticles') { env -> 0 }
+          link('noAuthors', authorService.&countByCountry)
+          link('noArticles', articleService.&countByCountry)
         }
         mapType('CountryStats') {
           link('count', countryService.&count)

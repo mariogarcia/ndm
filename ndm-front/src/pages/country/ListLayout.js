@@ -45,9 +45,7 @@ class ListLayout extends React.Component {
                 <Row>
                     <Col xs={12}>
                         <CountryTable
-                            countries={this.state.countries}
-                            onDelete={() => alert("")}
-                            onEdit={() => alert("")}/>
+                            countries={this.state.countries}/>
                     </Col>
                 </Row>
             </Grid>
@@ -61,16 +59,6 @@ const mapStateToProps = state => {
     }
 }
 
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onEdit: (id) => { dispatch(editCountry(id)) },
-        onDelete: (id) => { dispatch(deleteCountry(id)) }
-    }
-}
-
-
 export const ListLayoutContainer = connect(
     mapStateToProps,
-    mapDispatchToProps
 )(ListLayout)
