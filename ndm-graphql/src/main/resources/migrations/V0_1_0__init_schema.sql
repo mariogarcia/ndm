@@ -36,6 +36,8 @@ INSERT INTO ndm.country (id, published, name) VALUES ('74c93bac-fc85-11e7-8450-f
 INSERT INTO ndm.country (id, published, name) VALUES ('74c93f6c-fc85-11e7-8450-fea9aa178066', '2018-01-02', 'Italy');
 INSERT INTO ndm.country (id, published, name) VALUES ('74c940ca-fc85-11e7-8450-fea9aa178066', '2018-01-02', 'France');
 INSERT INTO ndm.country (id, published, name) VALUES ('74c9430e-fc85-11e7-8450-fea9aa178066', '2018-01-02', 'Portugal');
+INSERT INTO ndm.country (id, published, name) VALUES ('9a409c6e-fd60-11e7-8be5-0ed5f89f718b', '2018-01-03', 'United States');
+INSERT INTO ndm.country (id, published, name) VALUES ('9a40a056-fd60-11e7-8be5-0ed5f89f718b', '2018-01-03', 'United Kingdom');
 
 INSERT INTO ndm.newspaper VALUES ('9e2b8c98-fc85-11e7-8450-fea9aa178066', '2018-01-01', 'El Mundo', 'http://www.elmundo.es', '74c93bac-fc85-11e7-8450-fea9aa178066');
 INSERT INTO ndm.newspaper VALUES ('9e2b8ed2-fc85-11e7-8450-fea9aa178066', '2018-01-01', 'El Pais', 'http://www.pais.com', '74c93bac-fc85-11e7-8450-fea9aa178066');
