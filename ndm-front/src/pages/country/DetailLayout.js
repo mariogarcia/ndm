@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
+import { TagCloud } from 'react-tagcloud'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -7,6 +8,10 @@ import { FigurePanel } from '../../components/FigurePanel'
 import { NewspaperTable } from '../../components/NewspaperTable'
 import { Country } from '../../services/Country'
 
+const tagsOptions = {
+  luminosity: 'dark',
+    hue: 'green'
+};
 
 class DetailLayout extends React.Component {
 
@@ -14,7 +19,8 @@ class DetailLayout extends React.Component {
         super()
         this.state = {
             country: {
-                newspapers: Array.of()
+                newspapers: Array.of(),
+                relevantWords: Array.of()
             }
         }
     }
@@ -30,14 +36,21 @@ class DetailLayout extends React.Component {
         return (
             <Grid>
                 <Row>
-                    <Col xs={4}>
-                        <FigurePanel title="Registered Newspapers" value={this.state.country.noNewspapers}/>
+                    <Col xs={2}>
+                        <FigurePanel title="Newspapers" value={this.state.country.noNewspapers}/>
                     </Col>
-                    <Col xs={4}>
-                        <FigurePanel title="Registered Articles" value={this.state.country.noArticles}/>
+                    <Col xs={2}>
+                        <FigurePanel title="Articles" value={this.state.country.noArticles}/>
                     </Col>
-                    <Col xs={4}>
-                        <FigurePanel title="Registered Authors" value={this.state.country.noAuthors}/>
+                    <Col xs={2}>
+                        <FigurePanel title="Authors" value={this.state.country.noAuthors}/>
+                    </Col>
+                    <Col xs={6}>
+                        <TagCloud minSize={12}
+                                  maxSize={35}
+                                  colorOptions={tagsOptions}
+                                  tags={this.state.country.relevantWords}
+                                  onClick={tag => alert(`'${tag.value}' was selected!`)} />
                     </Col>
                 </Row>
                 <Row>

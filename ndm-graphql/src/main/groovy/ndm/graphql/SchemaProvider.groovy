@@ -42,6 +42,7 @@ class SchemaProvider implements Provider<GraphQLSchema> {
           link('noNewspapers', newspaperService.&countByCountry)
           link('noAuthors', authorService.&countByCountry)
           link('noArticles', articleService.&countByCountry)
+          link('relevantWords', countryService.&findAllRelevantWords)
         }
         mapType('CountryStats') {
           link('count', countryService.&count)

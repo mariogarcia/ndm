@@ -39,6 +39,10 @@ export let Country = {
                     noNewspapers \
                     noArticles \
                     noAuthors \
+                    relevantWords { \
+                      value \
+                      count \
+                    } \
                     newspapers { \
                        id \
                        name \

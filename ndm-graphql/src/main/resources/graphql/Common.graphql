@@ -1,8 +1,8 @@
 # Represents a given word frequency
 type WordFrequency {
   # The word
-  word: String
+  value: String
 
   # The word's frequency
-  frequency: Int
+  count: Int
 }

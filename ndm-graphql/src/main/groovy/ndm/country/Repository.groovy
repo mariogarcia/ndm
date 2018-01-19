@@ -25,7 +25,7 @@ class Repository {
    */
   List<Map> listAll() {
     return sql.rows('SELECT * FROM ndm.country') as List<Map>
-    }
+  }
 
   /**
    * Number of countries in database
@@ -51,5 +51,28 @@ class Repository {
     UUID uuid = UUID.fromString(id)
 
     return sql.firstRow('SELECT * FROM ndm.country where id = ?', uuid) as Map
+  }
+
+  /**
+   * Returns the latest (order by date desc) relevant words
+   * for a given country
+   *
+   * @param id id of the country
+   * @return a map with word/frequency pairs
+   * @since 0.1.0
+   */
+  Map findAllRelevantWords(String id) {
+    UUID uuid = UUID.fromString(id)
+
+    return sql
+      .firstRow('''
+        SELECT words FROM ndm.words_by_country
+        WHERE
+          country_id = ?
+        ORDER BY
+          published desc
+        LIMIT 1
+      ''', uuid)
+      .words as Map
   }
 }

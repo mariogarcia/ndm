@@ -5,6 +5,14 @@ CREATE TABLE ndm.country(
   name varchar(20)
 );
 
+CREATE TABLE ndm.words_by_country(
+  id UUID PRIMARY KEY,
+  published timestamp,
+  words hstore,
+  country_id UUID,
+  FOREIGN KEY (country_id) REFERENCES ndm.country(id)
+);
+
 CREATE TABLE ndm.newspaper(
   id UUID PRIMARY KEY,
   name varchar(100),
@@ -37,3 +45,13 @@ INSERT INTO ndm.article VALUES ('7ec1ebaa-fc89-11e7-8450-fea9aa178066', 'Un simp
 INSERT INTO ndm.article VALUES ('7ec1efce-fc89-11e7-8450-fea9aa178066', 'Dylan Farrow acusa a su padre Woody Allen: "Abusó sexualmente de mí"', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"EFE"}');
 INSERT INTO ndm.article VALUES ('7ec1f230-fc89-11e7-8450-fea9aa178066', '"Excepcional" calentamiento global: los tres últimos años son los más cálidos', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"TERESA GUERRERO"}');
 INSERT INTO ndm.article VALUES ('7ec1f492-fc89-11e7-8450-fea9aa178066', 'El Atlético había expulsado al ultra detenido, implicado en el caso Zabaleta', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"LUIS F. DURAN"}');
+
+INSERT INTO ndm.words_by_country (id, published, words, country_id) VALUES (
+       '89ed9778-fd2d-11e7-8be5-0ed5f89f718b',
+       '2018-01-18 22:00:00',
+       '"Trump" => 20,
+        "Puigdemont" => 18,
+        "Zabaleta" => 16,
+        "Futbol" => 13,
+        "Cultura" => 3',
+        '74c93bac-fc85-11e7-8450-fea9aa178066')

@@ -12,6 +12,7 @@ import graphql.schema.DataFetchingEnvironment
 class Service {
 
   /**
+   * Country repository
    *
    * @since 0.1.0
    */
@@ -29,6 +30,13 @@ class Service {
     return repository.listAll()
   }
 
+  /**
+   * Shows how many countries are registered
+   *
+   * @param env GraphQL environment
+   * @return total number of countries registered
+   * @since 0.1.0
+   */
   Integer count(DataFetchingEnvironment env) {
     return repository.count()
   }
@@ -36,11 +44,28 @@ class Service {
   /**
    * Finds a country by its id
    *
-   * @param env
+   * @param env GraphQL environment
    * @return a country
    * @since 0.1.0
    */
   Map findById(DataFetchingEnvironment env) {
     return repository.findById("${env.arguments.id}")
+  }
+
+  /**
+   * List latest relevant words for the current country
+   *
+   * @param env GraphQL environment
+   * @return a list of word/frequency pairs
+   * @since 0.1.0
+   */
+  List<Map> findAllRelevantWords(DataFetchingEnvironment env) {
+    Map source = env.source
+    Map words = repository.findAllRelevantWords("${source.id}")
+
+    return words
+      .collect { k, v ->
+        [value: k, count: v]
+      } as List<Map>
   }
 }
