@@ -28,19 +28,6 @@ class Repository {
   }
 
   /**
-   * Number of countries in database
-   *
-   * @param id
-   * @return how many countries
-   * @since 0.1.0
-   */
-  Integer count() {
-    return sql
-      .firstRow('SELECT count(*) as no FROM ndm.country')
-      .no as Integer
-  }
-
-  /**
    * Finds a country by its id
    *
    * @param id
@@ -72,7 +59,32 @@ class Repository {
         ORDER BY
           published desc
         LIMIT 1
-      ''', uuid)
-      .words as Map
+      ''', uuid)?.words as Map ?: [:]
+  }
+
+  /**
+   * Number of countries in database
+   *
+   * @param id
+   * @return how many countries
+   * @since 0.1.0
+   */
+  Integer count() {
+    return sql
+      .firstRow('SELECT count(*) as no FROM ndm.country')
+      .no as Integer
+  }
+
+  List<Map> findAllCountOvertime() {
+    return sql
+      .rows('''
+        SELECT
+          count(*),
+          published
+        FROM ndm.country GROUP BY
+          published
+        ORDER BY
+          published
+      ''') as List<Map>
   }
 }

@@ -31,17 +31,6 @@ class Service {
   }
 
   /**
-   * Shows how many countries are registered
-   *
-   * @param env GraphQL environment
-   * @return total number of countries registered
-   * @since 0.1.0
-   */
-  Integer count(DataFetchingEnvironment env) {
-    return repository.count()
-  }
-
-  /**
    * Finds a country by its id
    *
    * @param env GraphQL environment
@@ -67,5 +56,20 @@ class Service {
       .collect { k, v ->
         [value: k, count: v]
       } as List<Map>
+  }
+
+  /**
+   * Shows how many countries are registered
+   *
+   * @param env GraphQL environment
+   * @return total number of countries registered
+   * @since 0.1.0
+   */
+  Integer count(DataFetchingEnvironment env) {
+    return repository.count()
+  }
+
+  List<Map> findAllCountOvertime(DataFetchingEnvironment env) {
+    return repository.findAllCountOvertime()
   }
 }

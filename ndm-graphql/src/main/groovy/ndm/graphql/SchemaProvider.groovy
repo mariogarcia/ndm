@@ -46,6 +46,7 @@ class SchemaProvider implements Provider<GraphQLSchema> {
         }
         mapType('CountryStats') {
           link('count', countryService.&count)
+          link('overtime', countryService.&findAllCountOvertime)
         }
       }
       byResource('graphql/Schema.graphql') {

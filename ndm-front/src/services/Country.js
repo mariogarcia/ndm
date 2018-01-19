@@ -17,6 +17,10 @@ export let Country = {
                   query: "{ \
                     countryStats { \
                       count \
+                      overtime { \
+                        published \
+                        count \
+                      } \
                     } \
                     countries { \
                       id \

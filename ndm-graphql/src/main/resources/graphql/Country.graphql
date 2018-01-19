@@ -23,7 +23,12 @@ type Country {
   newspapers: [Newspaper]
 }
 
+type SingleTimeSeries {
+  published: String,
+  count: Int
+}
 
 type CountryStats {
   count: Int
+  overtime: [SingleTimeSeries]
 }

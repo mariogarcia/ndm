@@ -20,6 +20,9 @@ class DetailLayout extends React.Component {
         this.state = {
             country: {
                 newspapers: Array.of(),
+                noNewspapers: 0,
+                noArticles: 0,
+                noAuthors: 0,
                 relevantWords: Array.of()
             }
         }
@@ -36,14 +39,11 @@ class DetailLayout extends React.Component {
         return (
             <Grid>
                 <Row>
-                    <Col xs={2}>
+                    <Col xs={3}>
                         <FigurePanel title="Newspapers" value={this.state.country.noNewspapers}/>
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={3}>
                         <FigurePanel title="Articles" value={this.state.country.noArticles}/>
-                    </Col>
-                    <Col xs={2}>
-                        <FigurePanel title="Authors" value={this.state.country.noAuthors}/>
                     </Col>
                     <Col xs={6}>
                         <TagCloud minSize={12}
