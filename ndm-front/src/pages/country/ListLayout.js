@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactTable from 'react-table'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -10,21 +9,13 @@ import {
     Panel
 } from 'react-bootstrap'
 
-import {
-    LineChart,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Line,
-    ResponsiveContainer
-} from 'recharts'
-
 import { Country } from '../../services/Country'
-
-import 'react-table/react-table.css'
+import { CountryTable } from '../../components/CountryTable'
+import { CountryEvolutionPanel } from '../../components/CountryEvolutionPanel'
 
 /**
+ * Page layout where all available countries are listed
+ *
  * @since 0.1.0
  */
 class ListLayout extends React.Component {
@@ -54,59 +45,21 @@ class ListLayout extends React.Component {
     }
 
     render() {
-        const columns = [{
-            Header: 'Name',
-            accessor: 'name',
-            className: 'text-center'
-        },{
-            Header: 'Added',
-            accessor: 'published',
-            className: 'text-center'
-        }, {
-            Header: 'Newspapers',
-            accessor: 'noNewspapers',
-            className: 'text-center'
-        },{
-            Header: 'Articles',
-            accessor: 'noArticles',
-            className: 'text-center'
-        },{
-            Header: 'Authors',
-            accessor: 'noAuthors',
-            className: 'text-center'
-        }]
-
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
                         <Panel header="Registered countries">
-                        <ResponsiveContainer height={300} width='100%'>
-    	                    <LineChart height={300} data={this.state.countriesProgress}
-                                   margin={{top: 30, right: 30, left: 20, bottom: 10}}>
-                            <XAxis dataKey="published"/>
-                            <YAxis/>
-                            <CartesianGrid strokeDasharray="3 3"/>
-                            <Tooltip/>
-                            <Line type="monotone" dataKey="count" stroke="#82ca9d" />
-                        </LineChart>
-                        </ResponsiveContainer>
+                            <CountryEvolutionPanel
+                                evolution={this.state.countriesProgress} />
                         </Panel>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <ReactTable
-                            data={this.state.countries}
-                            columns={columns}
-                            defaultPageSize={10}
-                            getTrProps={(state, rowInfo, column, instance) => ({
-                                onClick: e => {
-                                    this.goToCountry(rowInfo.original)
-                                }
-                            })}
-                            className='-striped -highlight'
-                            />
+                        <CountryTable
+                            countries={this.state.countries}
+                            onClick={(row) => this.goToCountry(row)} />
                     </Col>
                 </Row>
             </Grid>
