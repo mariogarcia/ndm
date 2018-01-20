@@ -1,17 +1,13 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import { TagCloud } from 'react-tagcloud'
+
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 import { FigurePanel } from '../../components/FigurePanel'
 import { NewspaperTable } from '../../components/NewspaperTable'
+import { TagsPanel } from '../../components/TagsPanel'
 import { Country } from '../../services/Country'
-
-const tagsOptions = {
-  luminosity: 'dark',
-    hue: 'green'
-};
 
 class DetailLayout extends React.Component {
 
@@ -45,16 +41,14 @@ class DetailLayout extends React.Component {
                         <FigurePanel title="Articles" value={this.state.country.noArticles}/>
                     </Col>
                     <Col xs={6}>
-                        <TagCloud minSize={12}
-                                  maxSize={35}
-                                  colorOptions={tagsOptions}
-                                  tags={this.state.country.relevantWords}
-                                  onClick={tag => alert(`'${tag.value}' was selected!`)} />
+                        <TagsPanel
+                            relevantWords={this.state.country.relevantWords}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <NewspaperTable newspapers={this.state.country.newspapers}/>
+                        <NewspaperTable
+                            newspapers={this.state.country.newspapers}/>
                     </Col>
                 </Row>
             </Grid>
