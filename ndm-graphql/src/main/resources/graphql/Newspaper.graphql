@@ -9,4 +9,6 @@ type Newspaper {
 
   # Web site of the newspaper
   link: String
+
+  published: String
 }

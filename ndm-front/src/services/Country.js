@@ -50,6 +50,7 @@ export let Country = {
                     } \
                     newspapers { \
                        id \
+                       published \
                        name \
                        link \
                     } \

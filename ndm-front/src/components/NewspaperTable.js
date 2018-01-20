@@ -4,13 +4,16 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 
 const columns = [{
+    Header: 'Added',
+    accessor: 'published',
+    className: 'text-center',
+    width: 200
+}, {
     Header: 'Name',
-    accessor: 'name',
-    className: 'text-center'
-},{
+    accessor: 'name'
+}, {
     Header: 'Link',
-    accessor: 'link',
-    className: 'text-center'
+    accessor: 'link'
 }]
 
 
