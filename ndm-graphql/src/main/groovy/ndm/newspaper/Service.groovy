@@ -43,4 +43,8 @@ class Service {
 
     return repository.countByCountry("${source.id}")
   }
+
+  Map findById(DataFetchingEnvironment env) {
+    return repository.findById("${env.arguments.id}")
+  }
 }

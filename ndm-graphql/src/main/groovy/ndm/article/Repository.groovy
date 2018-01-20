@@ -37,4 +37,11 @@ class Repository {
 
     return sql.firstRow(query, uuid).no as Integer
   }
+
+  List<Map> findAllByNewspaper(String newspaperId) {
+    UUID uuid = UUID.fromString(newspaperId)
+
+    return sql
+      .rows('SELECT * FROM ndm.article WHERE newspaper_id = ?', uuid) as List<Map>
+  }
 }

@@ -1,18 +1,10 @@
-import axios from 'axios'
-
+import { Rest } from './Rest'
 import { Config } from '../config/app'
-
-const INSTANCE = axios.create({
-    timeout: 1000,
-    headers: {
-        'Accept': 'application/json'
-    }
-});
 
 export let Country = {
 
     listAll: () => {
-        return INSTANCE
+        return Rest
               .post(Config.GRAPHQL_API, {
                   query: "{ \
                     countryStats { \
@@ -35,7 +27,7 @@ export let Country = {
     },
 
     findById: (id) => {
-        return INSTANCE
+        return Rest
             .post(Config.GRAPHQL_API, {
                 query: `{ \
                   country(id: "${id}") { \

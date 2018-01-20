@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-
+import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -48,7 +48,8 @@ class DetailLayout extends React.Component {
                 <Row>
                     <Col xs={12}>
                         <NewspaperTable
-                            newspapers={this.state.country.newspapers}/>
+                            newspapers={this.state.country.newspapers}
+                            onClick={this.props.onClick} />
                     </Col>
                 </Row>
             </Grid>
@@ -64,6 +65,13 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClick: (row) => dispatch(push('/newspaper/' + row.id))
+    }
+}
+
 export const DetailLayoutContainer = withRouter(connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(DetailLayout))

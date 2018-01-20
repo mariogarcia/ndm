@@ -1,0 +1,7 @@
+type Article {
+  id: String
+  published: String
+  title: String
+  category: String
+  authors: [String]
+}

@@ -22,11 +22,14 @@ const columns = [{
  *
  * @since 0.1.0
  */
-export const NewspaperTable = ({newspapers}) => (
+export const NewspaperTable = ({newspapers, onClick}) => (
     <ReactTable
         data={newspapers}
         columns={columns}
-        defaultPageSize={10}
+        defaultPageSize={12}
         className='-striped -highlight'
+        getTrProps={(state, rowInfo, column, instance) => ({
+            onClick: (e) => onClick(rowInfo.original)
+        })}
         />
 )

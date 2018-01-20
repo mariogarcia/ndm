@@ -10,6 +10,7 @@ import {
 
 import { ListLayoutContainer } from './pages/country/ListLayout';
 import { DetailLayoutContainer } from './pages/country/DetailLayout';
+import { DetailLayoutContainer as NewspaperDetail } from './pages/newspaper/DetailLayout'
 import { history } from './router/store'
 
 import {
@@ -49,6 +50,7 @@ export class App extends Component {
                           <Switch>
                               <Route path="/country" exact={true} component={ListLayoutContainer}/>
                               <Route path="/country/:id" exact={true} component={DetailLayoutContainer}/>
+                              <Route path="/newspaper/:id" exact={true} component={NewspaperDetail}/>
                           </Switch>
                       </Col>
                   </Row>

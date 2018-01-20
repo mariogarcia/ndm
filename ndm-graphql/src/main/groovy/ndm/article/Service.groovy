@@ -24,8 +24,14 @@ class Service {
    * @since 0.1.0
    */
   Integer countByCountry(DataFetchingEnvironment env) {
-    Map source = env.source
+    Map source = env.source // Country
 
     return repository.countByCountry("${source.id}")
+  }
+
+  List<Map> findAllByNewspaper(DataFetchingEnvironment env) {
+    Map source = env.source // Newspaper
+
+    return repository.findAllByNewspaper("${source.id}")
   }
 }

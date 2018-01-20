@@ -2,6 +2,7 @@ type Query {
   countries: [Country]
   countryStats: CountryStats,
   country(id: String!): Country
+  newspaper(id: String!): Newspaper
 }
 
 schema {

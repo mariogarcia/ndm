@@ -11,4 +11,6 @@ type Newspaper {
   link: String
 
   published: String
+
+  articles: [Article]
 }

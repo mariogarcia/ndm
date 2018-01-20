@@ -26,6 +26,7 @@ CREATE TABLE ndm.newspaper(
 CREATE TABLE ndm.article(
   id UUID PRIMARY KEY,
   title text,
+  category text,
   published timestamp,
   newspaper_id UUID,
   authors text[][],
@@ -47,10 +48,10 @@ INSERT INTO ndm.newspaper VALUES ('9e2b90f8-fc85-11e7-8450-fea9aa178066', '2018-
 INSERT INTO ndm.newspaper VALUES ('9e2b936e-fc85-11e7-8450-fea9aa178066', '2018-01-01', 'El Economista', 'http://www.eleconomista.es', '74c93bac-fc85-11e7-8450-fea9aa178066');
 INSERT INTO ndm.newspaper VALUES ('9e2b9544-fc85-11e7-8450-fea9aa178066', '2018-01-01', 'La Vanguardia', 'http://www.lavanguardia.es', '74c93bac-fc85-11e7-8450-fea9aa178066');
 
-INSERT INTO ndm.article VALUES ('7ec1ebaa-fc89-11e7-8450-fea9aa178066', 'Un simple análisis de sangre es capaz de detectar ocho tipos de cáncer', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"LAURA TARDON"}');
-INSERT INTO ndm.article VALUES ('7ec1efce-fc89-11e7-8450-fea9aa178066', 'Dylan Farrow acusa a su padre Woody Allen: "Abusó sexualmente de mí"', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"EFE"}');
-INSERT INTO ndm.article VALUES ('7ec1f230-fc89-11e7-8450-fea9aa178066', '"Excepcional" calentamiento global: los tres últimos años son los más cálidos', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"TERESA GUERRERO"}');
-INSERT INTO ndm.article VALUES ('7ec1f492-fc89-11e7-8450-fea9aa178066', 'El Atlético había expulsado al ultra detenido, implicado en el caso Zabaleta', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"LUIS F. DURAN"}');
+INSERT INTO ndm.article VALUES ('7ec1ebaa-fc89-11e7-8450-fea9aa178066', 'Un simple análisis de sangre es capaz de detectar ocho tipos de cáncer', 'Actualidad', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"LAURA TARDON"}');
+INSERT INTO ndm.article VALUES ('7ec1efce-fc89-11e7-8450-fea9aa178066', 'Dylan Farrow acusa a su padre Woody Allen: "Abusó sexualmente de mí"', 'Actualidad', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"EFE"}');
+INSERT INTO ndm.article VALUES ('7ec1f230-fc89-11e7-8450-fea9aa178066', '"Excepcional" calentamiento global: los tres últimos años son los más cálidos', 'Actualidad', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"TERESA GUERRERO"}');
+INSERT INTO ndm.article VALUES ('7ec1f492-fc89-11e7-8450-fea9aa178066', 'El Atlético había expulsado al ultra detenido, implicado en el caso Zabaleta', 'Actualidad', '2018-01-18 22:00:00', '9e2b8c98-fc85-11e7-8450-fea9aa178066', '{"LUIS F. DURAN"}');
 
 INSERT INTO ndm.words_by_country (id, published, words, country_id) VALUES (
        '89ed9778-fd2d-11e7-8be5-0ed5f89f718b',

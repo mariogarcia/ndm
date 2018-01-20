@@ -35,7 +35,12 @@ class SchemaProvider implements Provider<GraphQLSchema> {
   GraphQLSchema get() {
     return mergeSchemas {
       byResource('graphql/Common.graphql')
-      byResource('graphql/Newspaper.graphql')
+      byResource('graphql/Article.graphql')
+      byResource('graphql/Newspaper.graphql') {
+        mapType('Newspaper') {
+          link('articles', articleService.&findAllByNewspaper)
+        }
+      }
       byResource('graphql/Country.graphql') {
         mapType('Country') {
           link('newspapers', newspaperService.&findAllByCountry)
@@ -54,6 +59,7 @@ class SchemaProvider implements Provider<GraphQLSchema> {
           link('countries', countryService.&listAll)
           link('country', countryService.&findById)
           link('countryStats') { env -> [:] }
+          link('newspaper', newspaperService.&findById)
         }
       }
     }

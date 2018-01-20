@@ -43,4 +43,11 @@ class Repository {
       .firstRow('SELECT count(*) as no FROM ndm.newspaper WHERE country_id = ?', uuid)
       .no as Integer
   }
+
+  Map findById(String id) {
+    UUID uuid = UUID.fromString(id)
+
+    return sql
+      .firstRow('SELECT * FROM ndm.newspaper WHERE id = ?', uuid) as Map
+  }
 }
