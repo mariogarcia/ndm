@@ -1,14 +1,14 @@
 import React from 'react'
-import { Grid, Row, Col, Button, Panel } from 'react-bootstrap'
+import ReactTable from 'react-table'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
-import { FigurePanel } from '../../components/FigurePanel'
-import { CountryTable } from '../../components/CountryTable'
-import { Country } from '../../services/Country'
 import {
-    editCountry,
-    deleteCountry
-} from '../../actions'
+    Grid,
+    Row,
+    Col,
+    Panel
+} from 'react-bootstrap'
 
 import {
     LineChart,
@@ -16,20 +16,13 @@ import {
     YAxis,
     CartesianGrid,
     Tooltip,
-    Legend,
     Line,
     ResponsiveContainer
 } from 'recharts'
 
-const datax = [
-      {name: '01/02/2018', newspapers: 1000, countries: 40},
-      {name: '02/02/2018', newspapers: 2000, countries: 139},
-      {name: '03/02/2018', newspapers: 3000, countries: 280},
-      {name: '04/02/2018', newspapers: 4780, countries: 390},
-      {name: '05/02/2018', newspapers: 5890, countries: 480},
-      {name: '06/02/2018', newspapers: 6390, countries: 580},
-      {name: '07/02/2018', newspapers: 6490, countries: 630},
-];
+import { Country } from '../../services/Country'
+
+import 'react-table/react-table.css'
 
 /**
  * @since 0.1.0
@@ -41,14 +34,13 @@ class ListLayout extends React.Component {
         this.state = {
             countries: Array.of(),
             countriesCount: 0,
-            countriesProgress:0
+            countriesProgress: Array.of()
         }
     }
 
     componentDidMount() {
         Country.listAll().then((data) => {
             const payload = data.data.data
-
             this.setState({
                 countriesCount: payload.countryStats.count,
                 countriesProgress: payload.countryStats.overtime,
@@ -57,7 +49,33 @@ class ListLayout extends React.Component {
         })
     }
 
+    goToCountry(country) {
+        this.props.history.push("/country/" + country.id)
+    }
+
     render() {
+        const columns = [{
+            Header: 'Name',
+            accessor: 'name',
+            className: 'text-center'
+        },{
+            Header: 'Added',
+            accessor: 'published',
+            className: 'text-center'
+        }, {
+            Header: 'Newspapers',
+            accessor: 'noNewspapers',
+            className: 'text-center'
+        },{
+            Header: 'Articles',
+            accessor: 'noArticles',
+            className: 'text-center'
+        },{
+            Header: 'Authors',
+            accessor: 'noAuthors',
+            className: 'text-center'
+        }]
+
         return (
             <Grid>
                 <Row>
@@ -78,8 +96,17 @@ class ListLayout extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <CountryTable
-                            countries={this.state.countries}/>
+                        <ReactTable
+                            data={this.state.countries}
+                            columns={columns}
+                            defaultPageSize={10}
+                            getTrProps={(state, rowInfo, column, instance) => ({
+                                onClick: e => {
+                                    this.goToCountry(rowInfo.original)
+                                }
+                            })}
+                            className='-striped -highlight'
+                            />
                     </Col>
                 </Row>
             </Grid>
@@ -93,6 +120,6 @@ const mapStateToProps = state => {
     }
 }
 
-export const ListLayoutContainer = connect(
+export const ListLayoutContainer = withRouter(connect(
     mapStateToProps,
-)(ListLayout)
+)(ListLayout))

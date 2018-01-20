@@ -30,7 +30,6 @@ class DetailLayout extends React.Component {
 
     componentDidMount() {
         this.props.data.then((data) => {
-            console.log(data.country)
             this.setState({country: data.country})
         })
     }

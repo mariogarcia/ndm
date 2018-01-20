@@ -24,6 +24,7 @@ export let Country = {
                     } \
                     countries { \
                       id \
+                      published \
                       name \
                       noNewspapers \
                       noArticles \

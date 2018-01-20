@@ -7,6 +7,8 @@ type Country {
   # English name of the country
   name: String!
 
+  published: String
+
   # Counter of authors today
   noAuthors: Int
 
