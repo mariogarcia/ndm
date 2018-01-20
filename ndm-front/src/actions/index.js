@@ -1,14 +1,11 @@
 
-export const editCountry = (id) => {
-    return {
-        type: 'COUNTRY_DETAIL',
-        id: id
-    }
+export const actionTypes = {
+    DETAIL_REQUEST: "@ndm/UI/countries/DETAIL_REQUEST",
 }
 
-export const deleteCountry = (id) => {
+export const showDetail = (id) => {
     return {
-        type: 'COUNTRY_DELETE',
+        type: actionTypes.DETAIL_REQUEST,
         id: id
     }
 }

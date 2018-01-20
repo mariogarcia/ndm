@@ -1,30 +1,15 @@
 import { combineReducers } from 'redux'
+import { Country } from '../services/Country'
+import { actionTypes } from '../actions'
 
-export const actionTypes = {
-    DETAIL: "@ndm/UI/countries/DETAIL",
-    DELETE: "@ndm/UI/countries/DELETE"
-}
-
-const actions = (state = [], action) => {
+const actions = (state = {}, action) => {
     console.log(action)
 
     switch (action.type) {
-    case actionTypes.DETAIL:
-        return [
-            ...state,
-            {
-                country: {
-                    name: 'Spain'
-                }
-            }
-        ]
-    case actionTypes.DELETE:
-        return [
-            ...state,
-            {
 
-            }
-        ]
+    case actionTypes.DETAIL_REQUEST:
+        return Country.findById(action.id)
+
     default:
         return state
     }

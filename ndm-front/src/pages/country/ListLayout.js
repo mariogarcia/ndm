@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { push } from 'react-router-redux'
 
 import {
     Grid,
@@ -23,9 +24,9 @@ class ListLayout extends React.Component {
     constructor() {
         super()
         this.state = {
-            countries: Array.of(),
+            countries: [],
             countriesCount: 0,
-            countriesProgress: Array.of()
+            countriesProgress: []
         }
     }
 
@@ -38,10 +39,6 @@ class ListLayout extends React.Component {
                 countries: payload.countries
             })
         })
-    }
-
-    goToCountry(country) {
-        this.props.history.push("/country/" + country.id)
     }
 
     render() {
@@ -59,7 +56,7 @@ class ListLayout extends React.Component {
                     <Col xs={12}>
                         <CountryTable
                             countries={this.state.countries}
-                            onClick={(row) => this.goToCountry(row)} />
+                            onClick={this.props.onClick} />
                     </Col>
                 </Row>
             </Grid>
@@ -67,12 +64,21 @@ class ListLayout extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        countries: Array.of()
+        countries: [],
+        countriesCount: 0,
+        countriesProgress: []
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClick: (row) => dispatch(push('/country/' + row.id))
     }
 }
 
 export const ListLayoutContainer = withRouter(connect(
     mapStateToProps,
+    mapDispatchToProps
 )(ListLayout))

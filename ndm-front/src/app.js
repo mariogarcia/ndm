@@ -10,9 +10,10 @@ import {
 
 import { ListLayoutContainer } from './pages/country/ListLayout';
 import { DetailLayoutContainer } from './pages/country/DetailLayout';
+import { history } from './router/store'
 
 import {
-    BrowserRouter as Router,
+    Router,
     Switch,
     Route
 } from 'react-router-dom'
@@ -20,7 +21,7 @@ import {
 export class App extends Component {
   render() {
       return (
-          <Router>
+          <Router history={history}>
               <Grid>
                   <Row>
                       <Col xs={12}>
