@@ -26,6 +26,7 @@ CREATE TABLE ndm.newspaper(
 CREATE TABLE ndm.article(
   id UUID PRIMARY KEY,
   title text,
+  link text,
   category text,
   published timestamp,
   newspaper_id UUID,

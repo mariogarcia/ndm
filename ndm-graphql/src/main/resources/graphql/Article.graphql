@@ -1,7 +1,8 @@
 type Article {
   id: String
-  published: String
   title: String
+  link: String
+  published: String
   category: String
   authors: [String]
 }
