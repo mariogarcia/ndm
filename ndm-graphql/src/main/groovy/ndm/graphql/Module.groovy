@@ -7,11 +7,10 @@ import graphql.schema.GraphQLSchema
 /**
  *
  */
-class HandlerModule extends AbstractModule {
+class Module extends AbstractModule {
 
   @Override
   protected void configure() {
-    bind(Handler).in(Scopes.SINGLETON)
     bind(GraphQLSchema).toProvider(SchemaProvider)
   }
 }

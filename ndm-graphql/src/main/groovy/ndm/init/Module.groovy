@@ -12,7 +12,7 @@ import ndm.db.FlywayService
  *
  * @since 0.1.0
  */
-class InitModule extends AbstractModule {
+class Module extends AbstractModule {
   @Override
   protected void configure() {
     Multibinder<Service> servicesBinder = Multibinder.newSetBinder(binder(), Service)

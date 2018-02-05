@@ -7,7 +7,7 @@ import javax.sql.DataSource
  * Creates a new {@link DataSource}
  * @since 0.1.0
  */
-class DataSourceModule extends AbstractModule {
+class Module extends AbstractModule {
   @Override
   protected void configure() {
     bind(DataSource).toProvider(HikariDataSourceProvider)

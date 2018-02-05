@@ -3,8 +3,8 @@ import static ratpack.groovy.Groovy.ratpack
 import ratpack.server.ServerConfigBuilder
 import ndm.config.AppConfig
 import ndm.cors.CorsHandler
-import ndm.graphql.Utils
-import ndm.graphql.Handler
+import gql.ratpack.GraphQLHandler
+import gql.ratpack.GraphiQLHandler
 
 /**
  *
@@ -20,12 +20,7 @@ ratpack {
 
   handlers {
     all(new CorsHandler())
-    all(Utils.createBindingHandler(Map))
-    prefix('graphql') {
-      post(Handler)
-    }
-    files {
-      dir('static').indexFiles('index.html')
-    }
+    post('graphql', GraphQLHandler)
+    get('graphql/browser', GraphiQLHandler)
   }
 }

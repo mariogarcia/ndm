@@ -2,7 +2,7 @@ version: 0.1.0
 
 dataSource:
   driverClassName: org.postgresql.Driver
-  uri: jdbc:postgresql://db/ndm
+  uri: jdbc:postgresql://192.168.250.100:6432/ndm
   username: ndm
-  password: ndm
+  password: mdn
   flywaySchemas: public,ndm

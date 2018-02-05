@@ -8,7 +8,7 @@ import com.google.inject.Scopes
  *
  * @since 0.1.0
  */
-class SystemModule extends AbstractModule {
+class Module extends AbstractModule {
 
   @Override
   protected void configure() {
